@@ -1,16 +1,19 @@
 public class Car
 {
-    public string Make { get; set; }
-    public string Model { get; set; }
+    public string Make { get; }
+    public string Model { get; }
+
+    public Car(string make, string model)
+    {
+        Make = make;
+        Model = model;
+    }
 
     public override bool Equals(object obj)
     {
-        if (obj is Car car)
-        {
-            return string.Equals(this.Make, car.Make) && 
-                   string.Equals(this.Model, car.Model);
-        }
-        return false;
+        return obj is Car other &&
+               Make == other.Make &&
+               Model == other.Model;
     }
 
     public override int GetHashCode()

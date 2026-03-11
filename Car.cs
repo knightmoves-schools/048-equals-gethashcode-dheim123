@@ -7,13 +7,15 @@ public class Car
     {
         if (obj is Car car)
         {
-            return this.Make == car.Make && this.Model == car.Model;
+            return string.Equals(this.Make, car.Make) && 
+                   string.Equals(this.Model, car.Model);
         }
         return false;
     }
 
     public override int GetHashCode()
     {
-        return (Make, Model).GetHashCode();
+        return HashCode.Combine(Make, Model);
     }
 }
+

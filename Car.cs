@@ -1,12 +1,19 @@
-﻿namespace knightmoves;
+public class Car
+{
+    public string Make { get; set; }
+    public string Model { get; set; }
 
-public class Car{
-    public string Make {get;}
-    public string Model {get;}
-
-    public Car(string make, string model)
+    public override bool Equals(object obj)
     {
-        Make = make;
-        Model = model;
+        if (obj is Car car)
+        {
+            return this.Make == car.Make && this.Model == car.Model;
+        }
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return (Make, Model).GetHashCode();
     }
 }
